@@ -17,7 +17,7 @@ class ContainerOfRaneAndHumidityAndWind extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: AppColors.mainBlue,
+        color: AppColors.mainBlue.withOpacity(.4),
       ),
       child: Row(
         children: [
