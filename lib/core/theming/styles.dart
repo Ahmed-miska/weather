@@ -5,7 +5,7 @@ class AppTextStyles {
   static TextStyle font20WhiteBold = const TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.bold,
-    color: AppColors.mainBlue,
+    color: AppColors.white,
   );
 
   static TextStyle font22WhiteBold = const TextStyle(
