@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weahter/core/helpers/spacing.dart';
-import 'package:weahter/core/theming/colors.dart';
 import 'package:weahter/core/theming/styles.dart';
 import 'package:weahter/features/home/ui/widgets/container_of_rane_humidity_wind.dart';
 import 'package:weahter/features/home/ui/widgets/home_weather_icon.dart';
 import 'package:weahter/features/home/ui/widgets/max_and_min_temperature.dart';
-
+import 'package:weahter/features/home/ui/widgets/search_icon.dart';
 import 'widgets/forcast_container.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -31,10 +30,7 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Icon(Icons.search, size: 25.h, color: AppColors.white),
-                ),
+                const SearchIcon(),
                 verticalSpace(20),
                 Text('London', style: AppTextStyles.font20WhiteBold),
                 verticalSpace(20),
