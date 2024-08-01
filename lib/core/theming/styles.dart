@@ -18,6 +18,21 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.white,
   );
+  static TextStyle font14BlackBold = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: AppColors.darkBlue,
+  );
+    static TextStyle font14GrayBold = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: AppColors.gray,
+  );
+  static TextStyle font18BlackBold = const TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkBlue,
+  );
 
   static TextStyle font32whiteBold = const TextStyle(
     fontSize: 32,

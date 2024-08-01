@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:weahter/core/routing/routes.dart';
 import 'package:weahter/features/home/ui/home_screen.dart';
+import 'package:weahter/features/search/ui/search_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -12,7 +13,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
-      
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SearchScreen(),
+        );
       default:
         return null;
     }
