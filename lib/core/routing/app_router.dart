@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weahter/core/di/injection.dart';
 import 'package:weahter/core/routing/routes.dart';
+import 'package:weahter/features/home/logic/weather_cubit.dart';
 import 'package:weahter/features/home/ui/home_screen.dart';
-import 'package:weahter/features/search/ui/search_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -11,12 +12,12 @@ class AppRouter {
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<WeatherCubit>(),
+            child: const HomeScreen(),
+          ),
         );
-      case Routes.searchScreen:
-        return MaterialPageRoute(
-          builder: (_) => const SearchScreen(),
-        );
+      
       default:
         return null;
     }

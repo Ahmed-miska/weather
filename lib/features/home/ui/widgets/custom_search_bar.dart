@@ -4,11 +4,14 @@ import 'package:weahter/core/theming/styles.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
-  final Function(String)? onChanged;
+
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
   const CustomSearchBar({
     super.key,
     required this.controller,
-    this.onChanged,
+    this.suffixIcon,
+    this.prefixIcon,
   });
 
   @override
@@ -22,11 +25,12 @@ class CustomSearchBar extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           border: InputBorder.none,
-          prefixIcon: const Icon(Icons.search),
+          suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon,
           hintText: 'search for a city',
           hintStyle: AppTextStyles.font14GrayBold,
         ),
-        onChanged: onChanged,
+        //  onChanged: onChanged,
       ),
     );
   }

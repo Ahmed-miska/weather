@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weahter/core/helpers/spacing.dart';
-import 'package:weahter/core/theming/styles.dart';
-import 'package:weahter/features/home/ui/widgets/container_of_rane_humidity_wind.dart';
-import 'package:weahter/features/home/ui/widgets/home_weather_icon.dart';
-import 'package:weahter/features/home/ui/widgets/max_and_min_temperature.dart';
-import 'package:weahter/features/home/ui/widgets/search_icon.dart';
-import 'widgets/forcast_container.dart';
+import 'package:weahter/features/home/logic/weather_cubit.dart';
+import 'package:weahter/features/home/ui/widgets/app_search_bar.dart';
+import 'package:weahter/features/home/ui/widgets/home_builder.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,37 +12,44 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.blue,
-              Colors.purple,
-            ],
-          ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-            child: Column(
-              children: [
-                const SearchIcon(),
-                verticalSpace(20),
-                Text('London', style: AppTextStyles.font20WhiteBold),
-                verticalSpace(20),
-                const HomeWeatherIcon(),
-                verticalSpace(10),
-                Text('30°', style: AppTextStyles.font40WhiteBold),
-                const MaxAndMinTemperature(),
-                verticalSpace(20),
-                const ContainerOfRaneAndHumidityAndWind(),
-                verticalSpace(20),
-                const ForcastContainer()
-              ],
-            ),
-          ),
+      body: SingleChildScrollView(
+        child: BlocBuilder<WeatherCubit, WeatherState>(
+          builder: (context, state) {
+            return Container(
+              decoration: BoxDecoration(
+                color: context.read<WeatherCubit>().bgColor,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    context.read<WeatherCubit>().bgColor.withOpacity(.2),
+                    context.read<WeatherCubit>().bgColor.withOpacity(.4),
+                    context.read<WeatherCubit>().bgColor.withOpacity(.6),
+                    context.read<WeatherCubit>().bgColor.withOpacity(.8),
+                    context.read<WeatherCubit>().bgColor,
+                  ],
+                ),
+              ),
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                      child: Column(
+                        children: [
+                          const AppSearchBar(),
+                          verticalSpace(20),
+                          const HomeBuilder(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

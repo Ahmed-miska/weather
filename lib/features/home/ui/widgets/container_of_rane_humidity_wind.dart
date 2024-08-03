@@ -7,8 +7,14 @@ import 'package:weahter/core/theming/colors.dart';
 import 'package:weahter/core/theming/styles.dart';
 
 class ContainerOfRaneAndHumidityAndWind extends StatelessWidget {
+  final int rane;
+  final int humidity;
+  final double wind;
   const ContainerOfRaneAndHumidityAndWind({
     super.key,
+    required this.rane,
+    required this.humidity,
+    required this.wind,
   });
 
   @override
@@ -23,15 +29,15 @@ class ContainerOfRaneAndHumidityAndWind extends StatelessWidget {
         children: [
           SvgPicture.asset(AppAssets.raneIcon),
           horizontalSpace(10),
-          Text('6%', style: AppTextStyles.font14whiteBold),
+          Text('$rane%', style: AppTextStyles.font14whiteBold),
           const Spacer(),
           SvgPicture.asset(AppAssets.humidityconIcon),
           horizontalSpace(10),
-          Text('70%', style: AppTextStyles.font14whiteBold),
+          Text('$humidity%', style: AppTextStyles.font14whiteBold),
           const Spacer(),
           SvgPicture.asset(AppAssets.windSpeedIcon),
           horizontalSpace(10),
-          Text('10km/h', style: AppTextStyles.font14whiteBold),
+          Text('$wind Km/h', style: AppTextStyles.font14whiteBold),
         ],
       ),
     );
