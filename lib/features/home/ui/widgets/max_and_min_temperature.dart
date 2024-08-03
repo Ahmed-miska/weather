@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:weahter/core/theming/styles.dart';
 
 class MaxAndMinTemperature extends StatelessWidget {
+  final double maxTemperature;
+  final double minTemperature;
   const MaxAndMinTemperature({
     super.key,
+    required this.maxTemperature,
+    required this.minTemperature,
   });
 
   @override
@@ -13,9 +17,9 @@ class MaxAndMinTemperature extends StatelessWidget {
       children: [
         const Spacer(),
         Text('Max:', style: AppTextStyles.font22WhiteBold),
-        Text(' 32°', style: AppTextStyles.font22WhiteBold),
+        Text(' $maxTemperature°', style: AppTextStyles.font22WhiteBold),
         Text('    Min:', style: AppTextStyles.font22WhiteBold),
-        Text(' 28°', style: AppTextStyles.font22WhiteBold),
+        Text(' $minTemperature°', style: AppTextStyles.font22WhiteBold),
         const Spacer(),
       ],
     );
